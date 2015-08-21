@@ -1,0 +1,14 @@
+mysql:
+    image: mkenney/base-mysql:v0.0.1
+    container_name: mysql
+    ports:
+        - "80"
+    hostname: mysql-9c0-com
+    volumes:
+        - ./data:/var/lib/mysql/
+        - /tmp/docker/var/log/httpd:/var/log/httpd
+        - /etc/localtime:/etc/localtime:ro
+    environment:
+        - server_env=dev
+        - env=1
+        - is_docker=1
