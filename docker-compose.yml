@@ -1,7 +1,7 @@
 mysql:
-    image: mkenney/base-mysql:latest
-    container_name: mysql
-    hostname: mysql-9c0-com
+    image: mkenney/base-mariadb:v0.0.2
+    container_name: mariadb
+    hostname: mariadb-9c0-com
     ports:
         - "3306"
     volumes:

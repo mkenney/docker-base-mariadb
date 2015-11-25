@@ -1,16 +1,16 @@
-FROM centos:7
+FROM mariadb:latest
 
 MAINTAINER Michael Kenney <mkenney@webbedlam.com>
 
-# System
-RUN yum install -y epel-release; yum clean all
-RUN yum update  -y; yum clean all
-RUN yum install -y hostname; yum clean all
-RUN yum install -y openssl; yum clean all
+# This should be vol-mounted in your docker-compose file
+RUN rm -rf /var/lib/mysql/*
 
-# MySQL
-RUN yum install -y mariadb-server; yum clean all
-RUN mysql_install_db --user=root --ldata=/var/lib/mysql/
+RUN apt-get -q -y update
 
-ENTRYPOINT /usr/bin/mysqld_safe --user=root
+# Configure terminal access
+COPY container/root/ /root/
 
+# Run
+ENTRYPOINT ["/docker-entrypoint.sh"]
+EXPOSE 3306
+CMD ["mysqld"]
