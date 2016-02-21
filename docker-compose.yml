@@ -1,13 +1,12 @@
 mysql:
-    image: mkenney/base-mariadb:v0.0.2
+    image: mkenney/base-mariadb:latest
     container_name: mariadb
-    hostname: mariadb-9c0-com
     ports:
         - "3306"
+    hostname: mkenney-base-mariadb
     volumes:
         - ./data:/var/lib/mysql/
         - /etc/localtime:/etc/localtime:ro
     environment:
         - server_env=dev
-        - env=1
         - is_docker=1
