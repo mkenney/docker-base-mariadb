@@ -17,6 +17,8 @@ COPY container/root/ /root/
 RUN mkdir -p /var/log/mysql/ \
     && ln -s /dev/stdout /var/log/mysql/mariadb-slow.log
 
+ENV TERM xterm
+
 # Run
 ENTRYPOINT ["/docker-entrypoint.sh"]
 EXPOSE 3306
