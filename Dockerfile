@@ -15,7 +15,7 @@ COPY container/etc/mysql/conf.d/mariadb.cnf /etc/mysql/conf.d/mariadb.cnf
 COPY container/root/ /root/
 
 RUN mkdir -p /var/log/mysql/ \
-    && ln -s /dev/stderr /var/log/mysql/mariadb-slow.log
+    && ln -s /dev/stdout /var/log/mysql/mariadb-slow.log
 
 # Run
 ENTRYPOINT ["/docker-entrypoint.sh"]
